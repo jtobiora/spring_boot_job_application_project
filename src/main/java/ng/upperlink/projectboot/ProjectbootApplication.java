@@ -35,7 +35,7 @@ public class ProjectbootApplication implements CommandLineRunner{
 	        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 	        admin.setPassword(encoder.encode("password"));
 	        
-	        //save the applicant
+	        //save the admin
 	        applicantService.saveApplicant(admin);
 		}
 	}
