@@ -122,7 +122,7 @@ public class MainController {
     public ResponseEntity<?> loginAsAdmin(@RequestBody Applicant applicant) {
         try {   	
         	Applicant user = applicantService.findApplicantByEmail(applicant.getEmail());
-        	if(user != null) {
+        	if(user != null && user.getRole().equalsIgnoreCase("ADMIN")) {
         		BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();          	
             	String inputPassword = applicant.getPassword();
             	String dbPassword = user.getPassword();
@@ -131,7 +131,7 @@ public class MainController {
             		admin.setName(user.getFirstName() + " " + user.getSurname());
             		admin.setRole(user.getRole());
             		return ResponseEntity.status(HttpStatus.OK).body(admin);
-            	}else {
+            	} else {
             		throw new RuntimeException("Username or password is incorrect");
             	}
         	}else {
