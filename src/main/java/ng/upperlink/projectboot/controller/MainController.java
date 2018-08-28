@@ -70,7 +70,7 @@ public class MainController {
 			        
 			        applicant.setPassport(passport.toString());
 			        applicant.setResume(resume.toString());
-			        applicant.setRole("ADMIN");
+			        applicant.setRole("USER");
 			    
 			        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 			        applicant.setPassword(encoder.encode(applicant.getPassword())); 
